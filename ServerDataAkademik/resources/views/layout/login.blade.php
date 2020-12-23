@@ -38,10 +38,16 @@
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Email</label>
 									<input type="email" name="email" class="form-control" id="signin-email" placeholder="Email">
+									@error('email')
+										<div class="alert alert-danger">{{ $message }}</div>
+									@enderror
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
 									<input type="password" name="password" class="form-control" id="signin-password" placeholder="Password">
+									@error('password')
+										<div class="alert alert-danger">{{ $message }}</div>
+									@enderror
 								</div>
 								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
 							</form>

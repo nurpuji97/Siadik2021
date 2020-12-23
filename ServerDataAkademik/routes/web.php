@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LayoutController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,10 +20,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index', [LayoutController::class, 'master']);
+
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 
 Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
 
 Route::get('/logout', [AuthController::class, 'Logout']);
+
+Route::get('/index', [LayoutController::class, 'master']);
+
+// Route::group(['prefix' => 'admin'], function () {
+    
+// });
