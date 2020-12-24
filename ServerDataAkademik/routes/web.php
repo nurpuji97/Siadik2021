@@ -28,8 +28,8 @@ Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
 
 Route::get('/logout', [AuthController::class, 'Logout']);
 
-Route::get('/index', [LayoutController::class, 'master']);
 
-// Route::group(['prefix' => 'admin'], function () {
-    
-// });
+
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+    Route::get('/index', [LayoutController::class, 'master']);
+});

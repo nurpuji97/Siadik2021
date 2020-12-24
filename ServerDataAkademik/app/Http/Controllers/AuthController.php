@@ -13,9 +13,9 @@ class AuthController extends Controller
     protected function getMessages()
     {
         return $messages = [
-            'email.required' => 'masukkan email',
-            'password.required' => 'masukkan password',
-            'password.min' => 'masukan minimal 4 karakter'
+            'email.required' => __('messages.email'),
+            'password.required' => __('messages.password'),
+            'password.min' => __('messages.password.min')
         ];
     }
 
@@ -48,7 +48,7 @@ class AuthController extends Controller
 
         // Manual Login
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect('{locale}/index')->with('berhasil', 'anda Berhasil login');
+            return redirect('/index')->with('berhasil', 'anda Berhasil login');
         }
 
         return redirect('/login');

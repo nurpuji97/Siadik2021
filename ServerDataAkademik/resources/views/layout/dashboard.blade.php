@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="panel">
                 <div class="panel-heading">
-                    <h1>selamat datang</h1>
+                    <h1>{{ __('messages.welcome') }}</h1>
                 </div>
                 <div class="panel-body">
                     <p>Server Data Akademik</p>

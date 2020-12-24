@@ -11,8 +11,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span>Bahasa</span> <i class="icon-submenu lnr lnr-chevron-down"></i> </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><i class="lnr lnr-user"></i> <span>Indonesia</span></a></li>
-                        <li><a href="#"><i class="lnr lnr-envelope"></i> <span>English</span></a></li>
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li><a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"><i class="lnr lnr-user"></i> <span>{{ $properties['native'] }}</span></a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="dropdown">
