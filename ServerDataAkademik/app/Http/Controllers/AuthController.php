@@ -51,7 +51,7 @@ class AuthController extends Controller
             return redirect('/index')->with('berhasil', 'anda Berhasil login');
         }
 
-        return redirect('/login');
+        return redirect('/login')->with('gagal', 'anda gagal login');
     }
 
     public function Logout()

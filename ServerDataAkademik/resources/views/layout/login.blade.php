@@ -33,6 +33,12 @@
 								<div class="logo text-center"><img src="{{ asset('assets/img/logo-dark.png') }}" alt="Klorofil Logo"></div>
 								<p class="lead">Login to your account</p>
 							</div>
+							@if(Session::has('berhasil'))
+								<div class="alert alert-success" role="alert">{{ Session::get('berhasil') }}</div>
+							@endif
+							@if(Session::has('gagal'))
+								<div class="alert alert-danger" role="alert">{{ Session::get('gagal') }}</div>
+							@endif
                             <form class="form-auth-small" action="{{ route('post.login') }}" method="POST">
                                 @csrf
 								<div class="form-group">
