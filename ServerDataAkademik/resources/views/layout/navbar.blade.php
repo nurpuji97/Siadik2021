@@ -17,6 +17,7 @@
                     </ul> --}}
                     <ul class="dropdown-menu">
                         <li><a href="{{ LaravelLocalization::getLocalizedURL('id') }}"><img src="{{ asset('icon/078-indonesia.png') }}" alt="" style="width:18px;height:18px;"> <span>Bahasa Indonesia</span></a></li>
+                        <li><a href="{{ LaravelLocalization::getLocalizedURL('jv-Java') }}"><img src="{{ asset('icon/078-indonesia.png') }}" alt="" style="width:18px;height:18px;"> <span>Bahasa Jawa</span></a></li>
                         <li><a href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img src="{{ asset('icon/153-united-states-of-america.png') }}" alt="" style="width:18px;height:18px;"> <span>English</span></a></li>
                         <li><a href="{{ LaravelLocalization::getLocalizedURL('ar') }}"><img src="{{ asset('icon/059-saudi-arabia.png') }}" alt="" style="width:18px;height:18px;"> <span>عرب</span></a></li>
                     </ul>
