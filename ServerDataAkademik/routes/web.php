@@ -31,5 +31,8 @@ Route::get('/logout', [AuthController::class, 'Logout']);
 
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
-    Route::get('/index', [LayoutController::class, 'master']);
+
+    Route::group(['middleware' => ['auth', 'checkRole:admin,siswa']], function () {
+        Route::get('/index', [LayoutController::class, 'master']);
+    });
 });
