@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LayoutController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -34,5 +35,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::group(['middleware' => ['auth', 'checkRole:admin,siswa']], function () {
         Route::get('/index', [LayoutController::class, 'master']);
+
+        Route::get('/siswa', [SiswaController::class, 'index']);
     });
 });
