@@ -8,5 +8,8 @@ return [
 
     "welcome" => "Welcome in The Servers Data Academic",
     "language" => "language",
-    "logout" => "Logout"
+    "logout" => "Logout",
+    "Dashboard" => "Dashboard",
+    "DataMaster" => "Master Data",
+    "Siswa" => "students"
 ];

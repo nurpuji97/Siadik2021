@@ -34,10 +34,16 @@
 								<p class="lead">Login to your account</p>
 							</div>
 							@if(Session::has('berhasil'))
-								<div class="alert alert-success" role="alert">{{ Session::get('berhasil') }}</div>
+								<div class="alert alert-success alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+									<i class="fa fa-check-circle"></i> {{ Session::get('berhasil') }}
+								</div>
 							@endif
 							@if(Session::has('gagal'))
-								<div class="alert alert-danger" role="alert">{{ Session::get('gagal') }}</div>
+								<div class="alert alert-success alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+									<i class="fa fa-times-circle"></i> {{ Session::get('gagal') }}
+								</div>
 							@endif
                             <form class="form-auth-small" action="{{ route('post.login') }}" method="POST">
                                 @csrf

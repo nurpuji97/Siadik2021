@@ -7,5 +7,8 @@ return [
 
     "welcome" => "Selamat datang di Server Data Akademik",
     "language" => "Bahasa",
-    "logout" => "Keluar"
+    "logout" => "Keluar",
+    "Dashboard" => "Dasbor",
+    "DataMaster" => "Data Master",
+    "Siswa" => "Siswa"
 ];
