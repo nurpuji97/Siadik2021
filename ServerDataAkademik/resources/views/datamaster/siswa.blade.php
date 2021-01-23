@@ -25,6 +25,7 @@
                         <tr>
                             <th scope="col">{{ __('tabel.Nama') }}</th>
                             <th scope="col">{{ __('tabel.Agama') }}</th>
+                            <th scope="col">Jenis Kelamin</th>
                             <th scope="col">{{ __('tabel.Alamat') }}</th>
                             <th scope="col">{{ __('tabel.Phone') }}</th>
                             <th scope="col">{{ __('tabel.Avatar') }}</th>
@@ -86,6 +87,13 @@
                         <option value="Katolik">{{ __('tabel.Katolik') }}</option>
                         <option value="Hindu">{{ __('tabel.Hindu') }}</option>
                         <option value="Buddha">{{ __('tabel.Buddha') }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                    <select id="jenis_kelamin" name="jenis_kelamin" class="form-control">
+                        <option value="pria">Laki-Laki</option>
+                        <option value="wanita">Perempuan</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -151,6 +159,10 @@
                 {
                     data: 'agama',
                     name: 'agama'
+                },
+                {
+                    data: 'jenis_kelamin',
+                    name: 'jenis_kelamin'
                 },
                 {
                     data: 'alamat',
@@ -281,6 +293,7 @@
                     success:function(html){
                         $('#name').val(html.data.name);
                         $('#agama').val(html.data.agama);
+                        $('#jenis_kelamin').val(html.data.jenis_kelamin);
                         $('#alamat').val(html.data.alamat);
                         $('#previewImg').html("<img src={{ URL::to('/') }}/images/"+html.data.avatar+" width='70' class='img-thumbnail' />");
                         $('#previewImg').append("<input type='hidden' name='hidden_image' value='"+html.data.avatar+"' />");

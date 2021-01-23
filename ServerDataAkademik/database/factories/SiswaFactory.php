@@ -24,6 +24,8 @@ class SiswaFactory extends Factory
         return [
             'name' => $this->faker->name,
             'agama' => $this->faker->randomElement(array('Islam', 'Kristen', 'katolik', 'Hindu', 'Budha')),
+            'jenis_kelamin' => $this->faker->randomElement(array('pria', 'wanita')),
+            'avatar' => $this->faker->randomElement(array('baseline_person_black_48dp.png')),
             'alamat' => $this->faker->address,
             'nohp' => $this->faker->phoneNumber
         ];

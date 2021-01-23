@@ -70,6 +70,7 @@ class SiswaController extends Controller
             'user_id' => $user->id,
             'name' => $request->name,
             'agama' => $request->agama,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'avatar' => $new_name,
             'nohp' => $request->nohp
@@ -125,6 +126,7 @@ class SiswaController extends Controller
         $form_siswa = array(
             'name' => $request->name,
             'agama' => $request->agama,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'avatar' => $image_name,
             'nohp' => $request->nohp
