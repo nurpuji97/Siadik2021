@@ -9,7 +9,7 @@
                     <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>{{ __('messages.DataMaster') }}</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                     <div id="subPages" class="collapse ">
                         <ul class="nav">
-                            <li><a href="/siswa" class="">{{ __('messages.Siswa') }}</a></li>
+                            <li><a href="/ajax-crud" class="">{{ __('messages.Siswa') }}</a></li>
                             <li><a href="#" class="">Login</a></li>
                         </ul>
                     </div>

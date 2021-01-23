@@ -37,8 +37,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
         Route::get('/index', [LayoutController::class, 'master']);
 
-        Route::get('/siswa', [SiswaController::class, 'index']);
+        // Route::get('/siswa', [SiswaController::class, 'index']);
+        // Route::post('/siswaPost', [SiswaController::class, 'postSiswa'])->name('siswa.post');
+        // route::get('/siswa/{id}', [SiswaController::class, 'SiswaId']);
 
-        Route::post('/siswaPost', [SiswaController::class, 'postSiswa'])->name('siswa.post');
+        Route::resource('ajax-crud', SiswaController::class);
+
+        Route::post('ajax-crud/update', [SiswaController::class, 'update'])->name('ajax-crud.update');
+
+        Route::get('ajax-crud/destroy/{id}', [SiswaController::class, 'destroy']);
     });
 });

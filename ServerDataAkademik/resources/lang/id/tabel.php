@@ -22,5 +22,9 @@ return [
     "Buddha" => "Buddha",
     "Input" => "Memasukkan",
     "Test_Email" => "test@test.com",
-    "msg_berhasil" => "selamat data anda telah dimasukkan"
+    "msg_berhasil" => "selamat data anda telah dimasukkan",
+    "msg_confirmHapus" => "Apakah anda yakin ingin menghapus data ini...?",
+    "msg_konfirmasi" => "konfirmasi",
+    "msg_ya" => "iya",
+    "msg_tidak" => "tidak"
 ];
