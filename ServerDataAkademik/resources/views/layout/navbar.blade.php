@@ -26,6 +26,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src=
                         "@if(auth()->user()->role == 'siswa')
                             {{ auth()->user()->siswa->getAvatar() }}
+                        @elseif(auth()->user()->role == 'guru')
+                            {{ auth()->user()->pegawai->getAvatar() }}
                         @else
                             {{ auth()->user()->siswa->getAvatar() }}
                         @endif"

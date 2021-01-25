@@ -25,7 +25,7 @@
                         <tr>
                             <th scope="col">{{ __('tabel.Nama') }}</th>
                             <th scope="col">{{ __('tabel.Agama') }}</th>
-                            <th scope="col">Jenis Kelamin</th>
+                            <th scope="col">{{ __('tabel.jenis_kelamin') }}</th>
                             <th scope="col">{{ __('tabel.Alamat') }}</th>
                             <th scope="col">{{ __('tabel.Phone') }}</th>
                             <th scope="col">{{ __('tabel.Avatar') }}</th>
@@ -90,10 +90,10 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                    <label for="jenis_kelamin">{{ __('tabel.jenis_kelamin') }}</label>
                     <select id="jenis_kelamin" name="jenis_kelamin" class="form-control">
-                        <option value="pria">Laki-Laki</option>
-                        <option value="wanita">Perempuan</option>
+                        <option value="pria">{{ __('tabel.laki-laki') }}</option>
+                        <option value="wanita">{{ __('tabel.perempuan') }}</option>
                     </select>
                 </div>
                 <div class="form-group">

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LayoutController;
+use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\SiswaController;
+use App\Models\Pegawai;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -33,18 +35,25 @@ Route::get('/logout', [AuthController::class, 'Logout']);
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 
-    Route::group(['middleware' => ['auth', 'checkRole:admin,siswa']], function () {
+    Route::group(['middleware' => ['auth', 'checkRole:admin,siswa,guru']], function () {
 
         Route::get('/index', [LayoutController::class, 'master']);
+    });
+
+    Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 
         // Route::get('/siswa', [SiswaController::class, 'index']);
         // Route::post('/siswaPost', [SiswaController::class, 'postSiswa'])->name('siswa.post');
         // route::get('/siswa/{id}', [SiswaController::class, 'SiswaId']);
 
+        // siswa
         Route::resource('ajax-crud', SiswaController::class);
-
         Route::post('ajax-crud/update', [SiswaController::class, 'update'])->name('ajax-crud.update');
-
         Route::get('ajax-crud/destroy/{id}', [SiswaController::class, 'destroy']);
+
+        // pegawai
+        Route::resource('ajax-pegawai', PegawaiController::class);
+        Route::post('ajax-pegawai/update', [PegawaiController::class, 'update'])->name('ajax-pegawai.update');
+        Route::get('ajax-pegawai/destroy/{id}', [PegawaiController::class, 'destroy']);
     });
 });
