@@ -8,9 +8,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
+/**
+ * kelas PegawaiController
+ * 
+ * kelas ini untuk CRUD(Cread Read Update Delete) pegawai laravel 8
+ * 
+ * @package LatihanProject2021
+ * @subpackage Cummon
+ * @version 1.0
+ * @author Nur Pujiyanto <Nurpujiyanto1997@gmail.com>
+ * 
+ */
 class PegawaiController extends Controller
 {
-
+    /**
+     * fungsi untuk menampilkan semua data pegawai menggunakan ajax
+     * 
+     * @return view datamaster.pegawai 
+     */
     public function index()
     {
         if (request()->ajax()) {
@@ -30,6 +45,12 @@ class PegawaiController extends Controller
         return view('datamaster.pegawai', compact('user'));
     }
 
+    /**
+     * fungsi untuk masukkan data pegawai dengan gambar menggunakan ajax
+     * 
+     * @param Request $request valid Request objek
+     * @return json menampilkan pesan success
+     */
     public function store(Request $request)
     {
 
@@ -81,6 +102,12 @@ class PegawaiController extends Controller
         return response()->json(['success' => __('tabel.msg_berhasil')]);
     }
 
+    /**
+     * fungsi untuk lihat data pegawai dengan parameter id
+     * 
+     * @param id $id 
+     * @return json menampilkan data pegawai
+     */
     public function edit($id)
     {
         if (request()->ajax()) {
@@ -89,6 +116,12 @@ class PegawaiController extends Controller
         }
     }
 
+    /**
+     * fungsi untuk update data pegawai dengan gambar dan parameter id 
+     * 
+     * @param Request $request valid Request objek 
+     * @return json jika berhasil menampilkan pesan success kalau gagal menampilkan pesan error
+     */
     public function update(Request $request)
     {
         $image_name = $request->hidden_image;
@@ -137,6 +170,11 @@ class PegawaiController extends Controller
         return response()->json(['success' => __('tabel.msg_berhasil')]);
     }
 
+    /**
+     * fungsi untuk hapus data siswa dengan parameter id
+     * 
+     * @param id $id 
+     */
     public function destroy($id)
     {
         $data = Pegawai::findOrFail($id);

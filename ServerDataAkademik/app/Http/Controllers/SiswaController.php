@@ -8,9 +8,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-
+/**
+ * kelas SiswaController
+ * 
+ * kelas ini untuk CRUD(Cread Read Update Delete) siswa laravel 8
+ * 
+ * @package LatihanProject2021
+ * @subpackage Cummon
+ * @version 1.0
+ * @author Nur Pujiyanto <Nurpujiyanto1997@gmail.com>
+ * 
+ */
 class SiswaController extends Controller
 {
+
+    /**
+     * fungsi untuk menampilkan semua data siswa menggunakan ajax
+     * 
+     * @return view datamaster.siswa 
+     */
     public function index()
     {
         if (request()->ajax()) {
@@ -30,6 +46,12 @@ class SiswaController extends Controller
         return view('datamaster.siswa', compact('user'));
     }
 
+    /**
+     * fungsi untuk masukkan data siswa dengan gambar menggunakan ajax
+     * 
+     * @param Request $request valid Request objek
+     * @return json menampilkan pesan success
+     */
     public function store(Request $request)
     {
 
@@ -81,6 +103,12 @@ class SiswaController extends Controller
         return response()->json(['success' => __('tabel.msg_berhasil')]);
     }
 
+    /**
+     * fungsi untuk lihat data siswa dengan parameter id
+     * 
+     * @param id $id 
+     * @return json menampilkan data siswa
+     */
     public function edit($id)
     {
         if (request()->ajax()) {
@@ -89,6 +117,13 @@ class SiswaController extends Controller
         }
     }
 
+
+    /**
+     * fungsi untuk update data siswa dengan gambar dan parameter id 
+     * 
+     * @param Request $request valid Request objek 
+     * @return json jika berhasil menampilkan pesan success kalau gagal menampilkan pesan error
+     */
     public function update(Request $request)
     {
         $image_name = $request->hidden_image;
@@ -137,6 +172,11 @@ class SiswaController extends Controller
         return response()->json(['success' => __('tabel.msg_berhasil')]);
     }
 
+    /**
+     * fungsi untuk hapus data siswa dengan parameter id
+     * 
+     * @param id $id 
+     */
     public function destroy($id)
     {
         $data = Siswa::findOrFail($id);
