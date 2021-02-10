@@ -38,7 +38,7 @@ class SiswaController extends Controller
         return response()->json([
             'message' => 'Success',
             'siswa' => $datasiswa
-        ]);
+        ], 200);
     }
 
     /**
@@ -69,6 +69,7 @@ class SiswaController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
+        // // convert menjadi gambar
         // $image = $request->file('avatar');
 
         // $new_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -101,7 +102,7 @@ class SiswaController extends Controller
             'messages' => 'success',
             'data_User' => $user,
             'data_siswa' => $siswa
-        ]);
+        ], 200);
     }
 
     /**
@@ -149,6 +150,133 @@ class SiswaController extends Controller
         return response()->json([
             'messages' => 'success',
             'data_siswa' => $siswa
+        ], 200);
+    }
+
+    /**
+     * fungsi untuk lihat data siswa dengan parameter id
+     * 
+     * @param id $id
+     * @return json respon message : success, siswa : data siswa
+     */
+    public function edit($id)
+    {
+        $siswa = Siswa::find($id);
+
+        return response()->json([
+            'messages' => 'success',
+            'data_siswa' => $siswa
+        ], 200);
+    }
+
+    /**
+     * fungsi untuk update user_id siswa dengan parameter id dan buat baru data user
+     * 
+     * @param id $id
+     * @param Request $request valid Request objek
+     * @return json respon message : success, user : data user ,siswa : data siswa
+     */
+    public function updateSiswaAddUser(Request $request, $id)
+    {
+        $siswa = Siswa::find($id);
+
+        // rules 
+        $rules = array(
+            'name' => 'required',
+            'role' => 'required',
+            'email' => 'required|unique:users,email',
+            'password' => 'required',
+        );
+
+        // validation
+        $error = Validator::make($request->all(), $rules);
+
+        if ($error->fails()) {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+        // insert data User
+        $user = new User;
+        $user->name = $request->name;
+        $user->role = $request->role;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->remember_token = Str::random(60);
+        $user->save();
+
+        // update user_id siswa
+        $siswa->update([
+            'user_id' => $user->id
+        ]);
+
+        return response()->json([
+            'message' => 'success',
+            'user' => $user,
+            'siswa' => $siswa
+        ]);
+    }
+
+    /**
+     * fungsi untuk update data siswa dengan parameter id
+     * 
+     * @param id $id
+     * @param Request $request valid Request objek
+     * @return json respon message : success, siswa : data siswa
+     */
+    public function update(Request $request, $id)
+    {
+        $siswa = Siswa::find($id);
+
+        // rules 
+        $rules = array(
+            'name' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required',
+            // 'avatar' => 'required|image|min:500',
+            'nohp' => 'required'
+        );
+
+        // validation
+        $error = Validator::make($request->all(), $rules);
+
+        if ($error->fails()) {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+        // // convert menjadi gambar
+        // $image = $request->file('avatar');
+
+        // $new_name = rand() . '.' . $image->getClientOriginalExtension();
+        // $image->move(public_path('images'), $new_name);
+
+        // update siswa
+        $siswa->update([
+            'name' => $request->name,
+            'agama' => $request->agama,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
+            // 'avatar' => $new_name,
+            'nohp' => $request->nohp
+        ]);
+
+        return response()->json([
+            'message' => 'success',
+            'data_siswa' => $siswa
+        ]);
+    }
+
+    /**
+     * fungsi untuk hapus data siswa dengan parameter id
+     * 
+     * @param id $id
+     * @return json respon message : success
+     */
+    public function delete($id)
+    {
+        Siswa::find($id)->delete();
+
+        return response()->json([
+            'message' => 'success'
         ]);
     }
 }

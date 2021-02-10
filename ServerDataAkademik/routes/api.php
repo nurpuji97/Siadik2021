@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+route::post('/login', [APIAuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum', 'checkRole:admin,siswa,guru']], function () {
 
@@ -33,7 +34,12 @@ Route::group(['middleware' => ['auth:sanctum', 'checkRole:admin']], function () 
 
     // route siswa
     Route::get('/siswa', [SiswaController::class, 'index']);
-    Route::post('/postsiswa', [SiswaController::class, 'createSiswa']);
-});
+    Route::post('/siswa', [SiswaController::class, 'create']);
+    Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit']);
+    Route::put('/siswa/{id}/update', [SiswaController::class, 'update']);
+    Route::delete('/siswa/{id}', [SiswaController::class, 'delete']);
 
-route::post('/login', [APIAuthController::class, 'login']);
+    // route siswa dan user
+    Route::post('/postsiswa', [SiswaController::class, 'createSiswa']);
+    Route::post('/addUserUpdateid/{id}', [SiswaController::class, 'updateSiswaAddUser']);
+});
