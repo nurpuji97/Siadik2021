@@ -29,5 +29,7 @@ return [
     "msg_confirmHapus" => "Apakah anda yakin ingin menghapus data ini...?",
     "msg_konfirmasi" => "konfirmasi",
     "msg_ya" => "iya",
-    "msg_tidak" => "tidak"
+    "msg_tidak" => "tidak",
+    "ruangan" => "Ruangan",
+    "kode" => "Kode"
 ];

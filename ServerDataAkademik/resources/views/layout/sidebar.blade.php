@@ -11,6 +11,7 @@
                         <ul class="nav">
                             <li><a href="/ajax-crud" class="">{{ __('messages.Siswa') }}</a></li>
                             <li><a href="/ajax-pegawai" class="">{{ __('pegawai.pegawai') }}</a></li>
+                            <li><a href="/ajax-ruangan" class="">{{ __('tabel.ruangan') }}</a></li>
                             <li><a href="#" class="">Login</a></li>
                         </ul>
                     </div>

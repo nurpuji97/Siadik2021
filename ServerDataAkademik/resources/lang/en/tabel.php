@@ -29,5 +29,9 @@ return [
     "msg_confirmHapus" => "Are you sure you want to delete this data ...?",
     "msg_konfirmasi" => "Confirmation",
     "msg_ya" => "Yes",
-    "msg_tidak" => "No"
+    "msg_tidak" => "No",
+    "ruangan" => "Ruangan",
+    "kode" => "kode",
+    "ruangan" => "Room",
+    "kode" => "Code"
 ];

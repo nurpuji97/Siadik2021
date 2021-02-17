@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController as APIAuthController;
+use App\Http\Controllers\API\PegawaiController;
 use App\Http\Controllers\API\SiswaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LayoutController;
@@ -39,7 +40,18 @@ Route::group(['middleware' => ['auth:sanctum', 'checkRole:admin']], function () 
     Route::put('/siswa/{id}/update', [SiswaController::class, 'update']);
     Route::delete('/siswa/{id}', [SiswaController::class, 'delete']);
 
+    // route pegawai
+    Route::get('/pegawai', [PegawaiController::class, 'index']);
+    Route::post('/pegawai', [PegawaiController::class, 'create']);
+    Route::get('/pegawai/{id}', [PegawaiController::class, 'edit']);
+    Route::put('/pegawai/{id}', [PegawaiController::class, 'update']);
+    Route::delete('/pegawai/{id}', [PegawaiController::class, 'delete']);
+
     // route siswa dan user
     Route::post('/postsiswa', [SiswaController::class, 'createSiswa']);
     Route::post('/addUserUpdateid/{id}', [SiswaController::class, 'updateSiswaAddUser']);
+
+    // route pegawai dan user
+    Route::post('/postpegawai', [PegawaiController::class, 'createPegawai']);
+    Route::post('/addUserUpdateIdPegawai/{id}', [PegawaiController::class, 'UpdatePegawaiAddUser']);
 });

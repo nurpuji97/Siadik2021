@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 /**
- * kelas AuthController
+ * kelas Api/AuthController
  * 
  * kelas ini untuk Autentikasi RestAPI laravel 8
  * 
@@ -26,7 +26,8 @@ class AuthController extends Controller
      * fungsi untuk login Auth sistem
      * 
      * @param Request $request valid Request objek
-     * @return json message : success, user : data user, token : kode token 
+     * @throws ValidationException if ValidationException with Messages email
+     * @return json @ : success, user : data user, token : kode token 
      */
     public function login(Request $request)
     {

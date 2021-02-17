@@ -29,6 +29,8 @@ return [
     "msg_confirmHapus" => "هل أنت متأكد أنك تريد حذف هذه البيانات ...؟",
     "msg_konfirmasi" => "التأكيد",
     "msg_ya" => "نعم",
-    "msg_tidak" => "ليس"
+    "msg_tidak" => "ليس",
+    "ruangan" => "مجال",
+    "kode" => "الشفرة"
 
 ];

@@ -29,5 +29,7 @@ return [
     "msg_confirmHapus" => "ꦯꦩ꧀ꦥꦼꦪꦤ꧀​ꦪꦏꦶꦤ꧀​ꦥꦼꦔꦶꦤ꧀​ꦩ꧀ꦧꦸꦱꦏ꧀​ꦢꦠ​ꦆꦏꦶ​꧉​꧉​꧉​​",
     "msg_konfirmasi" => "ꦑꦺꦴꦤ꧀ꦥ꦳ꦶꦂꦩꦱꦶ",
     "msg_ya" => "ꦎꦏꦼ",
-    "msg_tidak" => "ꦎꦫ"
+    "msg_tidak" => "ꦎꦫ",
+    "ruangan" => "ꦏꦩꦂ",
+    "kode" => "ꦏꦺꦴꦢꦼ"
 ];

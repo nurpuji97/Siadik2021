@@ -24,6 +24,7 @@ class PegawaiController extends Controller
     /**
      * fungsi untuk menampilkan semua data pegawai menggunakan ajax
      * 
+     * @return button $button mengembalikan nilai button
      * @return view datamaster.pegawai 
      */
     public function index()
@@ -86,7 +87,7 @@ class PegawaiController extends Controller
         $user->remember_token = Str::random(60);
         $user->save();
 
-        // insert data Siswa
+        // insert data Pegawai
         $form_pegawai = array(
             'user_id' => $user->id,
             'name' => $request->name,
@@ -171,7 +172,7 @@ class PegawaiController extends Controller
     }
 
     /**
-     * fungsi untuk hapus data siswa dengan parameter id
+     * fungsi untuk hapus data pegawai dengan parameter id
      * 
      * @param id $id 
      */

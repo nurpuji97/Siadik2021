@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\SiswaController;
 use App\Models\Pegawai;
 use Illuminate\Support\Facades\App;
@@ -55,5 +56,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('ajax-pegawai', PegawaiController::class);
         Route::post('ajax-pegawai/update', [PegawaiController::class, 'update'])->name('ajax-pegawai.update');
         Route::get('ajax-pegawai/destroy/{id}', [PegawaiController::class, 'destroy']);
+
+        // ruangan
+        Route::resource('ajax-ruangan', RuanganController::class);
+        Route::post('ajax-ruangan/update', [RuanganController::class, 'update'])->name('ajax-ruangan.update');
+        Route::get('/ajax-ruangan/destroy/{id}', [RuanganController::class, 'destroy']);
     });
 });
