@@ -31,5 +31,6 @@ return [
     "msg_ya" => "ꦎꦏꦼ",
     "msg_tidak" => "ꦎꦫ",
     "ruangan" => "ꦏꦩꦂ",
-    "kode" => "ꦏꦺꦴꦢꦼ"
+    "kode" => "ꦏꦺꦴꦢꦼ",
+    "mata_pelajaran" => "ꦩꦠ​ꦥꦼꦭꦗꦫꦤ꧀"
 ];

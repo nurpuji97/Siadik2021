@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LayoutController;
+use App\Http\Controllers\MapelController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\SiswaController;
@@ -43,10 +44,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 
-        // Route::get('/siswa', [SiswaController::class, 'index']);
-        // Route::post('/siswaPost', [SiswaController::class, 'postSiswa'])->name('siswa.post');
-        // route::get('/siswa/{id}', [SiswaController::class, 'SiswaId']);
-
         // siswa
         Route::resource('ajax-crud', SiswaController::class);
         Route::post('ajax-crud/update', [SiswaController::class, 'update'])->name('ajax-crud.update');
@@ -61,5 +58,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('ajax-ruangan', RuanganController::class);
         Route::post('ajax-ruangan/update', [RuanganController::class, 'update'])->name('ajax-ruangan.update');
         Route::get('/ajax-ruangan/destroy/{id}', [RuanganController::class, 'destroy']);
+
+        // Mata Pelajaran
+        Route::resource('ajax-mapel', MapelController::class);
+        Route::post('ajax-mapel/update', [MapelController::class, 'update'])->name('ajax-mapel.update');
+        Route::get('/ajax-mapel/destroy/{id}', [MapelController::class, 'destroy'])->name('ajax-mapel.delete');
     });
 });

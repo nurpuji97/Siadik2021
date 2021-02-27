@@ -40,7 +40,7 @@ class PegawaiController extends Controller
      * fungsi untuk simpan data pegawai dan user
      * 
      * @param Request $request valid Request objek
-     * @return json respon message : success, pegasai : data pegawai, user : data user
+     * @return json respon message : success, pegawai : data pegawai, user : data user
      */
     public function createPegawai(Request $request)
     {

@@ -31,6 +31,7 @@ return [
     "msg_ya" => "نعم",
     "msg_tidak" => "ليس",
     "ruangan" => "مجال",
-    "kode" => "الشفرة"
+    "kode" => "الشفرة",
+    "mata_pelajaran" => "المواضيع"
 
 ];
