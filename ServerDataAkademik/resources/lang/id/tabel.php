@@ -32,5 +32,6 @@ return [
     "msg_tidak" => "tidak",
     "ruangan" => "Ruangan",
     "kode" => "Kode",
-    "mata_pelajaran" => "Mata Pelajaran"
+    "mata_pelajaran" => "Mata Pelajaran",
+    "Kejuruan" => "Kejuruan"
 ];

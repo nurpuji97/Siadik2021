@@ -109,7 +109,7 @@ class SiswaController extends Controller
      * fungsi untuk simpan data siswa
      * 
      * @param Request $request valid Request objek
-     * @return json respon message : success, siswa : data siswa
+     * @return json respon message : success, siswa : menampilkan hasil input data siswa
      */
     public function create(Request $request)
     {
@@ -221,7 +221,7 @@ class SiswaController extends Controller
      * 
      * @param id $id
      * @param Request $request valid Request objek
-     * @return json respon message : success, siswa : data siswa
+     * @return json respon message : success, siswa : menampilkan hasil update data siswa
      */
     public function update(Request $request, $id)
     {

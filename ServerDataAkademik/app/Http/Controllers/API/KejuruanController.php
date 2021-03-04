@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Ruangan;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Kejuruan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 /**
- * kelas API RuanganController
+ * kelas API KejuruanController
  * 
- * kelas ini untuk CRUD(Cread Read Update Delete) ruangan laravel 8 Rest Api
+ * kelas ini untuk CRUD(Cread Read Update Delete) Kejuruan laravel 8 Rest Api
  * 
  * @package LatihanProject2021
  * @subpackage Cummon
@@ -18,37 +18,38 @@ use Illuminate\Http\Request;
  * @author Nur Pujiyanto <Nurpujiyanto1997@gmail.com>
  * 
  */
-class RuanganController extends Controller
+
+class KejuruanController extends Controller
 {
     /**
-     * fungsi untuk menampilkan semua data ruangan
+     * fungsi untuk menampilkan semua data kejuruan
      * 
-     * @return json respon message : success, ruangan : semua data ruangan 
+     * @return json respon message : success, kejuruan : semua data kejuruan 
      */
     public function index()
     {
         // tampilkan data
-        $ruangan = Ruangan::all();
+        $kejuruan = Kejuruan::all();
 
         // kembalikan nilai datasiswa
         return response()->json([
             'message' => 'Success',
-            'siswa' => $ruangan
+            'Kejuruan' => $kejuruan
         ], 200);
     }
 
     /**
-     * fungsi untuk membuat data ruangan
+     * fungsi untuk membuat data kejuruan
      * 
      * @param Request $request valid Request objek
-     * @return json respon message : success, ruangan : menampilkan hasil input data ruangan 
+     * @return json respon message : success, kejuruan : menampilkan hasil input data kejuruan 
      */
     public function create(Request $request)
     {
         // rules 
         $rules = array(
-            'kode_ruangan' => 'required',
-            'nama_ruangan' => 'required'
+            'kode_kejuruan' => 'required',
+            'nama_kejuruan' => 'required'
         );
 
         // validation
@@ -59,50 +60,51 @@ class RuanganController extends Controller
         }
 
         // create data
-        $ruangan = Ruangan::create($request->all());
+        $kejuruan = Kejuruan::create($request->all());
 
         // response json
         return response()->json([
             'messages' => 'success',
-            'data_ruangan' => $ruangan
+            'data_kejuruan' => $kejuruan
         ], 200);
     }
 
     /**
-     * fungsi untuk lihat data ruangan dengan parameter id
+     * fungsi untuk lihat data kejuruan dengan parameter id
      * 
      * @param id $id
-     * @return json respon message : success, data_ruangan : data ruangan
+     * @return json respon message : success, data_kejuruan : data kejuruan
      */
     public function edit($id)
     {
         // cari data ruangan berdasarkan id
-        $ruangan = Ruangan::find($id);
+        $kejuruan = Kejuruan::find($id);
 
         // response json
         return response()->json([
             'messages' => 'success',
-            'data_ruangan' => $ruangan
+            'data_kejuruan' => $kejuruan
         ], 200);
     }
 
     /**
-     * fungsi untuk update user_id ruangan dengan parameter id
+     * fungsi untuk update user_id kejuruan dengan parameter id
      * 
      * @param id $id
      * @param Request $request valid Request objek
-     * @return json respon message : success, data_ruangan : menampilkan hasil update data ruangan
+     * @return json respon message : success, data_kejuruan : menampilkan hasil update data kejuruan
      */
     public function update(Request $request, $id)
     {
         // cari data ruangan berdasarkan id
-        $ruangan = Ruangan::find($id);
+        $kejuruan = Kejuruan::find($id);
 
         // rules 
         $rules = array(
-            'kode_ruangan' => 'required',
-            'nama_ruangan' => 'required'
+            'kode_kejuruan' => 'required',
+            'nama_kejuruan' => 'required'
         );
+
 
         // validation
         $error = Validator::make($request->all(), $rules);
@@ -112,17 +114,17 @@ class RuanganController extends Controller
         }
 
         // update data
-        $ruangan->update($request->all());
+        $kejuruan->update($request->all());
 
         // response json
         return response()->json([
             'messages' => 'success',
-            'data_ruangan' => $ruangan
+            'data_kejuruan' => $kejuruan
         ], 200);
     }
 
     /**
-     * fungsi untuk hapus data ruangan dengan parameter id
+     * fungsi untuk hapus data kejuruan dengan parameter id
      * 
      * @param id $id
      * @return json respon message : success
@@ -130,7 +132,7 @@ class RuanganController extends Controller
     public function delete($id)
     {
         // hapus data ruangan berdasarkan id
-        Ruangan::find($id)->delete();
+        Kejuruan::find($id)->delete();
 
         // response json
         return response()->json([

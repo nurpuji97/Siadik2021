@@ -32,6 +32,7 @@ return [
     "msg_tidak" => "ليس",
     "ruangan" => "مجال",
     "kode" => "الشفرة",
-    "mata_pelajaran" => "المواضيع"
+    "mata_pelajaran" => "المواضيع",
+    "Kejuruan" => "مهني"
 
 ];

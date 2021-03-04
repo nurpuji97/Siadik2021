@@ -34,5 +34,6 @@ return [
     "kode" => "kode",
     "ruangan" => "Room",
     "kode" => "Code",
-    "mata_pelajaran" => "subjects"
+    "mata_pelajaran" => "subjects",
+    "Kejuruan" => "Vocational"
 ];

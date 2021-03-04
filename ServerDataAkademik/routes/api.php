@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\API\AuthController as APIAuthController;
+use App\Http\Controllers\API\KejuruanController;
+use App\Http\Controllers\API\MapelController;
 use App\Http\Controllers\API\PegawaiController;
 use App\Http\Controllers\API\RuanganController;
 use App\Http\Controllers\API\SiswaController;
@@ -55,6 +57,20 @@ Route::group(['middleware' => ['auth:sanctum', 'checkRole:admin']], function () 
     Route::get('/ruangan/{id}', [RuanganController::class, 'edit']);
     Route::put('/ruangan/{id}', [RuanganController::class, 'update']);
     Route::delete('/ruangan/{id}', [RuanganController::class, 'delete']);
+
+    // route mapel
+    Route::get('/mapel', [MapelController::class, 'index']);
+    Route::post('/mapel', [MapelController::class, 'create']);
+    Route::get('/mapel/{id}', [MapelController::class, 'edit']);
+    Route::put('/mapel/{id}', [MapelController::class, 'update']);
+    Route::delete('/mapel/{id}', [MapelController::class, 'delete']);
+
+    // route kejuruan
+    route::get('/kejuruan', [KejuruanController::class, 'index']);
+    route::post('/kejuruan', [KejuruanController::class, 'create']);
+    route::get('/kejuruan/{id}', [KejuruanController::class, 'edit']);
+    route::put('/kejuruan/{id}', [KejuruanController::class, 'update']);
+    route::delete('/kejuruan/{id}', [KejuruanController::class, 'delete']);
 
     // route siswa dan user
     Route::post('/postsiswa', [SiswaController::class, 'createSiswa']);

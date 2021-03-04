@@ -6,6 +6,7 @@ use App\Http\Controllers\MapelController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\KejuruanController;
 use App\Models\Pegawai;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -63,5 +64,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('ajax-mapel', MapelController::class);
         Route::post('ajax-mapel/update', [MapelController::class, 'update'])->name('ajax-mapel.update');
         Route::get('/ajax-mapel/destroy/{id}', [MapelController::class, 'destroy'])->name('ajax-mapel.delete');
+
+        // Kejuruan
+        Route::resource('ajax-kejuruan', KejuruanController::class);
+        route::post('ajax-kejuruan/update', [KejuruanController::class, 'update'])->name('ajax-kejuruan.update');
+        route::get('/ajax-kejuruan/destroy/{id}', [KejuruanController::class, 'destroy'])->name('ajax-kejuruan.delete');
     });
 });

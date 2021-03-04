@@ -13,6 +13,7 @@
                             <li><a href="/ajax-pegawai" class="">{{ __('pegawai.pegawai') }}</a></li>
                             <li><a href="/ajax-ruangan" class="">{{ __('tabel.ruangan') }}</a></li>
                             <li><a href="/ajax-mapel" class="">{{ __('tabel.mata_pelajaran') }}</a></li>
+                            <li><a href="/ajax-kejuruan" class="">{{ __('tabel.Kejuruan') }}</a></li>
                             <li><a href="#" class="">Login</a></li>
                         </ul>
                     </div>
