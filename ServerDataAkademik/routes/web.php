@@ -7,6 +7,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KejuruanController;
+use App\Http\Controllers\WaktuController;
 use App\Models\Pegawai;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -69,5 +70,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('ajax-kejuruan', KejuruanController::class);
         route::post('ajax-kejuruan/update', [KejuruanController::class, 'update'])->name('ajax-kejuruan.update');
         route::get('/ajax-kejuruan/destroy/{id}', [KejuruanController::class, 'destroy'])->name('ajax-kejuruan.delete');
+
+        // waktu
+        Route::resource('ajax-waktu', WaktuController::class);
+        Route::post('ajax-waktu/update', [WaktuController::class, 'update'])->name('ajax-waktu.update');
+        route::get('/ajax-waktu/delete/{id}', [WaktuController::class, 'destroy']);
     });
 });

@@ -6,6 +6,7 @@ use App\Http\Controllers\API\MapelController;
 use App\Http\Controllers\API\PegawaiController;
 use App\Http\Controllers\API\RuanganController;
 use App\Http\Controllers\API\SiswaController;
+use App\Http\Controllers\API\WaktuController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LayoutController;
 use App\Models\Ruangan;
@@ -71,6 +72,13 @@ Route::group(['middleware' => ['auth:sanctum', 'checkRole:admin']], function () 
     route::get('/kejuruan/{id}', [KejuruanController::class, 'edit']);
     route::put('/kejuruan/{id}', [KejuruanController::class, 'update']);
     route::delete('/kejuruan/{id}', [KejuruanController::class, 'delete']);
+
+    // route waktu
+    route::get('/waktu', [WaktuController::class, 'index']);
+    route::post('/waktu', [WaktuController::class, 'create']);
+    route::get('/waktu/{id}', [WaktuController::class, 'edit']);
+    route::put('/waktu/{id}', [WaktuController::class, 'update']);
+    route::delete('/waktu/{id}', [WaktuController::class, 'delete']);
 
     // route siswa dan user
     Route::post('/postsiswa', [SiswaController::class, 'createSiswa']);

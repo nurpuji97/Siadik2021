@@ -33,6 +33,7 @@ return [
     "ruangan" => "مجال",
     "kode" => "الشفرة",
     "mata_pelajaran" => "المواضيع",
-    "Kejuruan" => "مهني"
+    "Kejuruan" => "مهني",
+    "Waktu" => "الوقت"
 
 ];

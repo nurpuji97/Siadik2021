@@ -14,7 +14,7 @@
                             <li><a href="/ajax-ruangan" class="">{{ __('tabel.ruangan') }}</a></li>
                             <li><a href="/ajax-mapel" class="">{{ __('tabel.mata_pelajaran') }}</a></li>
                             <li><a href="/ajax-kejuruan" class="">{{ __('tabel.Kejuruan') }}</a></li>
-                            <li><a href="#" class="">Login</a></li>
+                            <li><a href="/ajax-waktu" class="">{{ __('tabel.Waktu') }}</a></li>
                         </ul>
                     </div>
                 </li>

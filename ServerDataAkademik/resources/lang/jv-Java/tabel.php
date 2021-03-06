@@ -33,5 +33,6 @@ return [
     "ruangan" => "ꦏꦩꦂ",
     "kode" => "ꦏꦺꦴꦢꦼ",
     "mata_pelajaran" => "ꦩꦠ​ꦥꦼꦭꦗꦫꦤ꧀",
-    "Kejuruan" => "ꦑꦼꦗꦸꦫꦸꦮꦤ꧀"
+    "Kejuruan" => "ꦑꦼꦗꦸꦫꦸꦮꦤ꧀",
+    "Waktu" => "ꦮꦼꦏ꧀ꦠꦸ"
 ];

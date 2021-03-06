@@ -9,19 +9,19 @@
     <div class="col-md 12">
         <div class="panel">
             <div class="panel-heading">
-                <h1>{{ __('tabel.Kejuruan') }}</h1>
+                <h1>{{ __('tabel.Waktu') }}</h1>
             </div>
             <div class="panel-body">
-                <table class="table table-hover overflow-auto" id="table_kejuruan">
+                <table class="table table-hover overflow-auto" id="table_waktu">
                     <thead>
                         <tr>
-                            <th scope="col">{{ __('tabel.kode')." ". __('tabel.Kejuruan') }}</th>
-                            <th scope="col">{{ __('tabel.Nama')." ". __('tabel.Kejuruan') }}</th>
+                            <th scope="col">{{ __('tabel.kode')." ". __('tabel.Waktu') }}</th>
+                            <th scope="col">{{ __('tabel.Nama')." ". __('tabel.Waktu') }}</th>
                             <th scope="col">{{ __('tabel.Aksi') }}
                                 {{-- Create data --}}
                                 <a class="badge badge-info"
-                                name="createRecordKejuruan"
-                                id="createRecordKejuruan"
+                                name="createRecordWaktu"
+                                id="createRecordWaktu"
                                 >+</a>
                             </th>
                         </tr>
@@ -36,7 +36,7 @@
 </div>
 
     {{-- Create --}}
-    <div class="modal fade" id="formModalKejuruan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="formModalWaktu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -47,15 +47,15 @@
                 </div>
                 <div class="modal-body">
                     <span id="form_result"></span>
-                    <form id="form_kejuruan" enctype="multipart/form-data">
+                    <form id="form_waktu" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="kode_kejuruan">Kode Kejuruan</label>
-                        <input type="text" class="form-control" name="kode_kejuruan" id="kode_kejuruan" placeholder="{{ __('tabel.kode')." ". __('tabel.Kejuruan') }}">
+                        <label for="jam">Jam</label>
+                        <input type="text" class="form-control" name="jam" id="jam" placeholder="{{ __('tabel.kode')." ". __('tabel.Waktu') }}">
                     </div>
                     <div class="form-group">
-                        <label for="nama_kejuruan">Nama Kejuruan</label>
-                        <input type="text" class="form-control" name="nama_kejuruan" id="nama_kejuruan" placeholder="{{ __('tabel.Nama')." ". __('tabel.Kejuruan') }}">
+                        <label for="jp">Jp</label>
+                        <input type="text" class="form-control" name="jp" id="jp" placeholder="{{ __('tabel.Nama')." ". __('tabel.Waktu') }}">
                     </div>
                     <input type="hidden" name="hidden_id" id="hidden_id" />
                     <input type="hidden" name="action" id="action" />
@@ -92,23 +92,22 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript">
-
     // menampilkan data
     $(document).ready(function(){
-        $('#table_kejuruan').DataTable({
+        $('#table_waktu').DataTable({
             processing: true,
             serverSide: true,
             ajax:{
-                url: "{{ route('ajax-kejuruan.index') }}",
+                url: "{{ route('ajax-waktu.index') }}",
             },
             columns:[
                 {
-                    data: 'kode_kejuruan',
-                    name: 'kode_kejuruan'
+                    data: 'jam',
+                    name: 'jam'
                 },
                 {
-                    data: 'nama_kejuruan',
-                    name: 'nama_kejuruan'
+                    data: 'jp',
+                    name: 'jp'
                 },
                 {
                     data: 'action',
@@ -120,21 +119,21 @@
     });
 
    // memunculkan modal
-    $('#createRecordKejuruan').click(function(){
-        $('.modal-title').text("{{ __('tabel.Input')." ".__('tabel.Kejuruan') }}");
+   $('#createRecordWaktu').click(function(){
+        $('.modal-title').text("{{ __('tabel.Input')." ".__('tabel.Waktu') }}");
         $('#action').val("Add");
         $('#action_button').val("Add");
-        $('#formModalKejuruan').modal('show');
+        $('#formModalWaktu').modal('show');
     });
 
        // simpan dan update data
-        $('#form_kejuruan').on('submit',function(event){
+       $('#form_waktu').on('submit',function(event){
         event.preventDefault();
 
         // simpan data
         if($('#action').val() == 'Add'){
             $.ajax({
-                url: "{{ route('ajax-kejuruan.store') }}",
+                url: "{{ route('ajax-waktu.store') }}",
                 method: "POST",
                 data: new FormData(this),
                 contentType: false,
@@ -154,8 +153,8 @@
                     if(data.success)
                     {
                         html = '<div class="alert alert-success">' + data.success + '</div>';
-                        $('#form_kejuruan')[0].reset();
-                        $('#table_kejuruan').DataTable().ajax.reload();
+                        $('#form_waktu')[0].reset();
+                        $('#table_waktu').DataTable().ajax.reload();
                     }
                     $('#form_result').html(html);
                 }
@@ -163,9 +162,9 @@
         }
 
        // update data
-       if($('#action').val() == "Edit"){
+        if($('#action').val() == "Edit"){
             $.ajax({
-                url: "{{ route('ajax-kejuruan.update') }}",
+                url: "{{ route('ajax-waktu.update') }}",
                 method: "POST",
                 data: new FormData(this),
                 contentType: false,
@@ -184,8 +183,8 @@
                     if(data.success)
                     {
                         html = '<div class="alert alert-success" >'+data.success+'</div>';
-                        $('#form_kejuruan')[0].reset();
-                        $('#table_kejuruan').DataTable().ajax.reload();
+                        $('#form_waktu')[0].reset();
+                        $('#table_waktu').DataTable().ajax.reload();
                     }
                     $('#form_result').html(html);
                 }
@@ -199,16 +198,16 @@
         var id = $(this).attr('id');
         $('#form_result').html('');
         $.ajax({
-            url: "/ajax-kejuruan/"+id+"/edit",
+            url: "/ajax-waktu/"+id+"/edit",
             dataType: "json",
             success: function(html){
-                $('#kode_kejuruan').val(html.data.kode_kejuruan);
-                $('#nama_kejuruan').val(html.data.nama_kejuruan);
+                $('#jam').val(html.data.jam);
+                $('#jp').val(html.data.jp);
                 $('#hidden_id').val(html.data.id);
                 $('#action_button').val("Edit");
-                $('.modal-title').text("{{ __('tabel.Edit')." ".__('tabel.Kejuruan') }}");
+                $('.modal-title').text("{{ __('tabel.Edit')." ".__('tabel.Waktu') }}");
                 $('#action').val("Edit");
-                $('#formModalKejuruan').modal('show');
+                $('#formModalWaktu').modal('show');
             }
         })
     });
@@ -223,16 +222,15 @@
 
     $('#ok_button').click(function(){
         $.ajax({
-            url: "ajax-kejuruan/destroy/"+user_id,
+            url: "ajax-waktu/delete/"+user_id,
             success:function(data){
                 setTimeout(function(){
                     $('#confirmModal').modal('hide');
-                    $('#table_kejuruan').DataTable().ajax.reload();
+                    $('#table_waktu').DataTable().ajax.reload();
                 }, 2000);
             }
         })
     });
-
 </script>
 
 @endsection
