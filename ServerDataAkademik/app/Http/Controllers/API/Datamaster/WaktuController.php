@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Datamaster;
 
 use App\Http\Controllers\Controller;
-use App\Models\Mapel;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Waktu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 /**
- * kelas API MapelController
+ * kelas API WaktuController
  * 
- * kelas ini untuk CRUD(Cread Read Update Delete) mapel laravel 8 Rest Api
+ * kelas ini untuk CRUD(Cread Read Update Delete) Waktu laravel 8 Rest Api
  * 
  * @package LatihanProject2021
  * @subpackage Cummon
@@ -19,39 +19,37 @@ use Illuminate\Http\Request;
  * 
  */
 
-class MapelController extends Controller
+class WaktuController extends Controller
 {
-
     /**
-     * fungsi untuk menampilkan semua data mapel
+     * fungsi untuk menampilkan semua data kejuruan
      * 
-     * @return json respon message : success, mapel : semua data mapel 
+     * @return json respon message : success, waktu : semua data waktu 
      */
     public function index()
     {
         // tampilkan data
-        $mapel = Mapel::all();
+        $waktu = Waktu::all();
 
         // kembalikan nilai datasiswa
         return response()->json([
             'message' => 'Success',
-            'mapel' => $mapel
+            'waktu' => $waktu
         ], 200);
     }
 
     /**
-     * fungsi untuk membuat data mapel
+     * fungsi untuk membuat data waktu
      * 
      * @param Request $request valid Request objek
-     * @return json respon message : success, mapel : menampilkan hasil input data mapel 
+     * @return json respon message : success, waktu : menampilkan hasil input data waktu 
      */
-
     public function create(Request $request)
     {
         // rules 
         $rules = array(
-            'kode_mapel' => 'required',
-            'nama_mapel' => 'required'
+            'jam' => 'required',
+            'jp' => 'required'
         );
 
         // validation
@@ -62,49 +60,49 @@ class MapelController extends Controller
         }
 
         // create data
-        $mapel = Mapel::create($request->all());
+        $waktu = Waktu::create($request->all());
 
         // response json
         return response()->json([
             'messages' => 'success',
-            'data_mapel' => $mapel
+            'data_waktu' => $waktu
         ], 200);
     }
 
     /**
-     * fungsi untuk lihat data mapel dengan parameter id
+     * fungsi untuk lihat data waktu dengan parameter id
      * 
      * @param id $id
-     * @return json respon message : success, data_mapel : data mapel
+     * @return json respon message : success, data_waktu : data waktu
      */
     public function edit($id)
     {
         // cari data ruangan berdasarkan id
-        $mapel = Mapel::find($id);
+        $waktu = Waktu::find($id);
 
         // response json
         return response()->json([
             'messages' => 'success',
-            'data_mapel' => $mapel
+            'data_waktu' => $waktu
         ], 200);
     }
 
     /**
-     * fungsi untuk update user_id mapel dengan parameter id
+     * fungsi untuk update waktu dengan parameter id
      * 
      * @param id $id
      * @param Request $request valid Request objek
-     * @return json respon message : success, data_mapel : menampilkan hasil update data mapel
+     * @return json respon message : success, data_waktu : menampilkan hasil update data waktu
      */
     public function update(Request $request, $id)
     {
-        // cari data ruangan berdasarkan id
-        $mapel = Mapel::find($id);
+        // cari data waktu berdasarkan id
+        $waktu = Waktu::find($id);
 
         // rules 
         $rules = array(
-            'kode_mapel' => 'required',
-            'nama_mapel' => 'required'
+            'jam' => 'required',
+            'jp' => 'required'
         );
 
         // validation
@@ -115,17 +113,17 @@ class MapelController extends Controller
         }
 
         // update data
-        $mapel->update($request->all());
+        $waktu->update($request->all());
 
         // response json
         return response()->json([
             'messages' => 'success',
-            'data_mapel' => $mapel
+            'data_waktu' => $waktu
         ], 200);
     }
 
     /**
-     * fungsi untuk hapus data mapel dengan parameter id
+     * fungsi untuk hapus data waktu dengan parameter id
      * 
      * @param id $id
      * @return json respon message : success
@@ -133,7 +131,7 @@ class MapelController extends Controller
     public function delete($id)
     {
         // hapus data ruangan berdasarkan id
-        Mapel::find($id)->delete();
+        Waktu::find($id)->delete();
 
         // response json
         return response()->json([

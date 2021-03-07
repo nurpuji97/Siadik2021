@@ -9,6 +9,18 @@ use Illuminate\Notifications\Notifiable;
 // package sanctum api
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * Model User
+ * 
+ * kelas ini untuk pendeklarasikan model User, default hidden serta casts dan Eloquitment Relationship table laravel 8
+ * 
+ * @package LatihanProject2021
+ * @subpackage Cummon
+ * @version 1.0
+ * @author Nur Pujiyanto <Nurpujiyanto1997@gmail.com>
+ * 
+ */
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;

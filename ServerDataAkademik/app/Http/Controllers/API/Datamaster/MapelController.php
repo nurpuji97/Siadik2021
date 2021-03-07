@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Datamaster;
 
 use App\Http\Controllers\Controller;
-use App\Models\Ruangan;
+use App\Models\Mapel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 /**
- * kelas API RuanganController
+ * kelas API MapelController
  * 
- * kelas ini untuk CRUD(Cread Read Update Delete) ruangan laravel 8 Rest Api
+ * kelas ini untuk CRUD(Cread Read Update Delete) mapel laravel 8 Rest Api
  * 
  * @package LatihanProject2021
  * @subpackage Cummon
@@ -18,37 +18,40 @@ use Illuminate\Http\Request;
  * @author Nur Pujiyanto <Nurpujiyanto1997@gmail.com>
  * 
  */
-class RuanganController extends Controller
+
+class MapelController extends Controller
 {
+
     /**
-     * fungsi untuk menampilkan semua data ruangan
+     * fungsi untuk menampilkan semua data mapel
      * 
-     * @return json respon message : success, ruangan : semua data ruangan 
+     * @return json respon message : success, mapel : semua data mapel 
      */
     public function index()
     {
         // tampilkan data
-        $ruangan = Ruangan::all();
+        $mapel = Mapel::all();
 
         // kembalikan nilai datasiswa
         return response()->json([
             'message' => 'Success',
-            'siswa' => $ruangan
+            'mapel' => $mapel
         ], 200);
     }
 
     /**
-     * fungsi untuk membuat data ruangan
+     * fungsi untuk membuat data mapel
      * 
      * @param Request $request valid Request objek
-     * @return json respon message : success, ruangan : menampilkan hasil input data ruangan 
+     * @return json respon message : success, mapel : menampilkan hasil input data mapel 
      */
+
     public function create(Request $request)
     {
         // rules 
         $rules = array(
-            'kode_ruangan' => 'required',
-            'nama_ruangan' => 'required'
+            'kode_mapel' => 'required',
+            'nama_mapel' => 'required'
         );
 
         // validation
@@ -59,49 +62,49 @@ class RuanganController extends Controller
         }
 
         // create data
-        $ruangan = Ruangan::create($request->all());
+        $mapel = Mapel::create($request->all());
 
         // response json
         return response()->json([
             'messages' => 'success',
-            'data_ruangan' => $ruangan
+            'data_mapel' => $mapel
         ], 200);
     }
 
     /**
-     * fungsi untuk lihat data ruangan dengan parameter id
+     * fungsi untuk lihat data mapel dengan parameter id
      * 
      * @param id $id
-     * @return json respon message : success, data_ruangan : data ruangan
+     * @return json respon message : success, data_mapel : data mapel
      */
     public function edit($id)
     {
         // cari data ruangan berdasarkan id
-        $ruangan = Ruangan::find($id);
+        $mapel = Mapel::find($id);
 
         // response json
         return response()->json([
             'messages' => 'success',
-            'data_ruangan' => $ruangan
+            'data_mapel' => $mapel
         ], 200);
     }
 
     /**
-     * fungsi untuk update user_id ruangan dengan parameter id
+     * fungsi untuk update user_id mapel dengan parameter id
      * 
      * @param id $id
      * @param Request $request valid Request objek
-     * @return json respon message : success, data_ruangan : menampilkan hasil update data ruangan
+     * @return json respon message : success, data_mapel : menampilkan hasil update data mapel
      */
     public function update(Request $request, $id)
     {
         // cari data ruangan berdasarkan id
-        $ruangan = Ruangan::find($id);
+        $mapel = Mapel::find($id);
 
         // rules 
         $rules = array(
-            'kode_ruangan' => 'required',
-            'nama_ruangan' => 'required'
+            'kode_mapel' => 'required',
+            'nama_mapel' => 'required'
         );
 
         // validation
@@ -112,17 +115,17 @@ class RuanganController extends Controller
         }
 
         // update data
-        $ruangan->update($request->all());
+        $mapel->update($request->all());
 
         // response json
         return response()->json([
             'messages' => 'success',
-            'data_ruangan' => $ruangan
+            'data_mapel' => $mapel
         ], 200);
     }
 
     /**
-     * fungsi untuk hapus data ruangan dengan parameter id
+     * fungsi untuk hapus data mapel dengan parameter id
      * 
      * @param id $id
      * @return json respon message : success
@@ -130,7 +133,7 @@ class RuanganController extends Controller
     public function delete($id)
     {
         // hapus data ruangan berdasarkan id
-        Ruangan::find($id)->delete();
+        Mapel::find($id)->delete();
 
         // response json
         return response()->json([

@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Datamaster;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pegawai;
+use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
+
 /**
- * kelas Api/PegawaiController
+ * kelas Api/SiswaController
  * 
- * kelas ini untuk CRUD(Cread Read Update Delete) pegawai RestAPI laravel 8
+ * kelas ini untuk CRUD(Cread Read Update Delete) siswa RestAPI laravel 8
  * 
  * @package LatihanProject2021
  * @subpackage Cummon
@@ -20,29 +21,33 @@ use Illuminate\Support\Str;
  * @author Nur Pujiyanto <Nurpujiyanto1997@gmail.com>
  * 
  */
-class PegawaiController extends Controller
+class SiswaController extends Controller
 {
+
     /**
-     * Fungsi menampilkan data pegawai
-     * @return json message = 'success' dan Array datapegawai 
+     * fungsi untuk menampilkan semua data siswa
+     * 
+     * @return json respon message : success, siswa : semua data siswa 
      */
     public function index()
     {
-        $datapegawai = Pegawai::all();
+        // tampilkan data
+        $datasiswa = Siswa::all();
 
+        // kembalikan nilai datasiswa
         return response()->json([
             'message' => 'Success',
-            'pegawai' => $datapegawai
-        ]);
+            'siswa' => $datasiswa
+        ], 200);
     }
 
     /**
-     * fungsi untuk simpan data pegawai dan user
+     * fungsi untuk simpan data siswa dan user
      * 
      * @param Request $request valid Request objek
-     * @return json respon message : success, pegawai : data pegawai, user : data user
+     * @return json respon message : success, siswa : data siswa, user : data user
      */
-    public function createPegawai(Request $request)
+    public function createSiswa(Request $request)
     {
         // rules 
         $rules = array(
@@ -79,8 +84,8 @@ class PegawaiController extends Controller
         $user->remember_token = Str::random(60);
         $user->save();
 
-        // insert data Pegawai
-        $form_pegawai = array(
+        // insert data Siswa
+        $form_siswa = array(
             'user_id' => $user->id,
             'name' => $request->name,
             'agama' => $request->agama,
@@ -90,22 +95,21 @@ class PegawaiController extends Controller
             'nohp' => $request->nohp
         );
 
-
-        // simpan data pegawai
-        $pegawai = Pegawai::create($form_pegawai);
+        // simpan data siswa
+        $siswa = Siswa::create($form_siswa);
 
         return response()->json([
             'messages' => 'success',
             'data_User' => $user,
-            'data_pegawai' => $pegawai
+            'data_siswa' => $siswa
         ], 200);
     }
 
     /**
-     * fungsi untuk simpan data pegawai
+     * fungsi untuk simpan data siswa
      * 
      * @param Request $request valid Request objek
-     * @return json respon message : success, pegawai : menampilkan hasil input data pegawai
+     * @return json respon message : success, siswa : menampilkan hasil input data siswa
      */
     public function create(Request $request)
     {
@@ -130,8 +134,8 @@ class PegawaiController extends Controller
         // $new_name = rand() . '.' . $image->getClientOriginalExtension();
         // $image->move(public_path('images'), $new_name);
 
-        // insert data Pegawai
-        $form_pegawai = array(
+        // insert data Siswa
+        $form_siswa = array(
             'name' => $request->name,
             'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
@@ -140,43 +144,41 @@ class PegawaiController extends Controller
             'nohp' => $request->nohp
         );
 
-        // simpan data pegawai
-        $pegawai = Pegawai::create($form_pegawai);
+        // simpan data siswa
+        $siswa = Siswa::create($form_siswa);
 
         return response()->json([
             'messages' => 'success',
-            'data_siswa' => $pegawai
+            'data_siswa' => $siswa
         ], 200);
     }
 
     /**
-     * fungsi untuk lihat data pegawai dengan parameter id
+     * fungsi untuk lihat data siswa dengan parameter id
      * 
      * @param id $id
-     * @return json respon message : success, data_pegawai : data pegawai
+     * @return json respon message : success, siswa : data siswa
      */
     public function edit($id)
     {
-        // cari data pegawai berdasarkan id
-        $pegawai = Pegawai::find($id);
+        $siswa = Siswa::find($id);
 
         return response()->json([
-            'message' => 'Success',
-            'data_pegawai' => $pegawai
-        ]);
+            'messages' => 'success',
+            'data_siswa' => $siswa
+        ], 200);
     }
 
     /**
-     * fungsi untuk update user_id pegawai dengan parameter id dan buat baru data user
+     * fungsi untuk update user_id siswa dengan parameter id dan buat baru data user
      * 
      * @param id $id
      * @param Request $request valid Request objek
-     * @return json respon message : success, user : data user ,pegawai : data pegawai
+     * @return json respon message : success, user : data user ,siswa : data siswa
      */
-    public function UpdatePegawaiAddUser(Request $request, $id)
+    public function updateSiswaAddUser(Request $request, $id)
     {
-        // cari data pegawai berdasarkan id
-        $pegawai = Pegawai::find($id);
+        $siswa = Siswa::find($id);
 
         // rules 
         $rules = array(
@@ -202,31 +204,28 @@ class PegawaiController extends Controller
         $user->remember_token = Str::random(60);
         $user->save();
 
-        // update user_id pegawai
-        $pegawai->update([
+        // update user_id siswa
+        $siswa->update([
             'user_id' => $user->id
         ]);
 
         return response()->json([
             'message' => 'success',
             'user' => $user,
-            'pegawai' => $pegawai
+            'siswa' => $siswa
         ]);
     }
 
     /**
-     * fungsi untuk update data pegawai dengan parameter id
+     * fungsi untuk update data siswa dengan parameter id
      * 
      * @param id $id
      * @param Request $request valid Request objek
-     * @return json respon message : success, data_pegawai : menampilkan hasil update data pegawai
+     * @return json respon message : success, siswa : menampilkan hasil update data siswa
      */
-
     public function update(Request $request, $id)
     {
-        // cari data pegawai berdasarkan id
-        $pegawai = Pegawai::find($id);
-
+        $siswa = Siswa::find($id);
 
         // rules 
         $rules = array(
@@ -251,7 +250,7 @@ class PegawaiController extends Controller
         // $image->move(public_path('images'), $new_name);
 
         // update siswa
-        $pegawai->update([
+        $siswa->update([
             'name' => $request->name,
             'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
@@ -262,19 +261,19 @@ class PegawaiController extends Controller
 
         return response()->json([
             'message' => 'success',
-            'data_siswa' => $pegawai
+            'data_siswa' => $siswa
         ]);
     }
 
     /**
-     * fungsi untuk hapus data pegawai dengan parameter id
+     * fungsi untuk hapus data siswa dengan parameter id
      * 
      * @param id $id
      * @return json respon message : success
      */
     public function delete($id)
     {
-        Pegawai::find($id)->delete();
+        Siswa::find($id)->delete();
 
         return response()->json([
             'message' => 'success'

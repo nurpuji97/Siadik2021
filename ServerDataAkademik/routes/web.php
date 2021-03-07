@@ -1,14 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\LayoutController;
-use App\Http\Controllers\MapelController;
-use App\Http\Controllers\PegawaiController;
-use App\Http\Controllers\RuanganController;
-use App\Http\Controllers\SiswaController;
-use App\Http\Controllers\KejuruanController;
-use App\Http\Controllers\WaktuController;
-use App\Models\Pegawai;
+use App\Http\Controllers\WEB\Datamaster\KejuruanController as DatamasterKejuruanController;
+use App\Http\Controllers\WEB\Datamaster\MapelController as DatamasterMapelController;
+use App\Http\Controllers\WEB\Datamaster\PegawaiController as DatamasterPegawaiController;
+use App\Http\Controllers\WEB\Datamaster\RuanganController as DatamasterRuanganController;
+use App\Http\Controllers\WEB\Datamaster\SiswaController as DatamasterSiswaController;
+use App\Http\Controllers\WEB\Datamaster\WaktuController as DatamasterWaktuController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -41,39 +39,39 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::group(['middleware' => ['auth', 'checkRole:admin,siswa,guru']], function () {
 
-        Route::get('/index', [LayoutController::class, 'master']);
+        Route::get('/index', [AuthController::class, 'master']);
     });
 
     Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 
         // siswa
-        Route::resource('ajax-crud', SiswaController::class);
-        Route::post('ajax-crud/update', [SiswaController::class, 'update'])->name('ajax-crud.update');
-        Route::get('ajax-crud/destroy/{id}', [SiswaController::class, 'destroy']);
+        Route::resource('ajax-crud', DatamasterSiswaController::class);
+        Route::post('ajax-crud/update', [DatamasterSiswaController::class, 'update'])->name('ajax-crud.update');
+        Route::get('ajax-crud/destroy/{id}', [DatamasterSiswaController::class, 'destroy']);
 
         // pegawai
-        Route::resource('ajax-pegawai', PegawaiController::class);
-        Route::post('ajax-pegawai/update', [PegawaiController::class, 'update'])->name('ajax-pegawai.update');
-        Route::get('ajax-pegawai/destroy/{id}', [PegawaiController::class, 'destroy']);
+        Route::resource('ajax-pegawai', DatamasterPegawaiController::class);
+        Route::post('ajax-pegawai/update', [DatamasterPegawaiController::class, 'update'])->name('ajax-pegawai.update');
+        Route::get('ajax-pegawai/destroy/{id}', [DatamasterPegawaiController::class, 'destroy']);
 
         // ruangan
-        Route::resource('ajax-ruangan', RuanganController::class);
-        Route::post('ajax-ruangan/update', [RuanganController::class, 'update'])->name('ajax-ruangan.update');
-        Route::get('/ajax-ruangan/destroy/{id}', [RuanganController::class, 'destroy']);
+        Route::resource('ajax-ruangan', DatamasterRuanganController::class);
+        Route::post('ajax-ruangan/update', [DatamasterRuanganController::class, 'update'])->name('ajax-ruangan.update');
+        Route::get('/ajax-ruangan/destroy/{id}', [DatamasterRuanganController::class, 'destroy']);
 
         // Mata Pelajaran
-        Route::resource('ajax-mapel', MapelController::class);
-        Route::post('ajax-mapel/update', [MapelController::class, 'update'])->name('ajax-mapel.update');
-        Route::get('/ajax-mapel/destroy/{id}', [MapelController::class, 'destroy'])->name('ajax-mapel.delete');
+        Route::resource('ajax-mapel', DatamasterMapelController::class);
+        Route::post('ajax-mapel/update', [DatamasterMapelController::class, 'update'])->name('ajax-mapel.update');
+        Route::get('/ajax-mapel/destroy/{id}', [DatamasterMapelController::class, 'destroy'])->name('ajax-mapel.delete');
 
         // Kejuruan
-        Route::resource('ajax-kejuruan', KejuruanController::class);
-        route::post('ajax-kejuruan/update', [KejuruanController::class, 'update'])->name('ajax-kejuruan.update');
-        route::get('/ajax-kejuruan/destroy/{id}', [KejuruanController::class, 'destroy'])->name('ajax-kejuruan.delete');
+        Route::resource('ajax-kejuruan', DatamasterKejuruanController::class);
+        route::post('ajax-kejuruan/update', [DatamasterKejuruanController::class, 'update'])->name('ajax-kejuruan.update');
+        route::get('/ajax-kejuruan/destroy/{id}', [DatamasterKejuruanController::class, 'destroy'])->name('ajax-kejuruan.delete');
 
         // waktu
-        Route::resource('ajax-waktu', WaktuController::class);
-        Route::post('ajax-waktu/update', [WaktuController::class, 'update'])->name('ajax-waktu.update');
-        route::get('/ajax-waktu/delete/{id}', [WaktuController::class, 'destroy']);
+        Route::resource('ajax-waktu', DatamasterWaktuController::class);
+        Route::post('ajax-waktu/update', [DatamasterWaktuController::class, 'update'])->name('ajax-waktu.update');
+        route::get('/ajax-waktu/delete/{id}', [DatamasterWaktuController::class, 'destroy']);
     });
 });

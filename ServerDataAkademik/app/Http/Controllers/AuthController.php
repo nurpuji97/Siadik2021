@@ -87,6 +87,17 @@ class AuthController extends Controller
     }
 
     /**
+     * fungsi untuk ke halaman dashboard
+     * 
+     * @return ke halaman dashboard  
+     */
+    public function master()
+    {
+        return view('layout.dashboard');
+    }
+
+
+    /**
      * fungsi untuk login Auth sistem
      * 
      * @return  jika berhasil logout maka ke halaman login  

@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\WEB\Datamaster;
 
-use App\Models\Ruangan;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Mapel;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * kelas RuanganController
+ * kelas MapelController
  * 
- * kelas ini untuk CRUD(Cread Read Update Delete) ruangan laravel 8
+ * kelas ini untuk CRUD(Cread Read Update Delete) mapel laravel 8
  * 
  * @package LatihanProject2021
  * @subpackage Cummon
@@ -17,18 +18,19 @@ use Illuminate\Support\Facades\Validator;
  * @author Nur Pujiyanto <Nurpujiyanto1997@gmail.com>
  * 
  */
-class RuanganController extends Controller
+class MapelController extends Controller
 {
     /**
-     * fungsi untuk menampilkan semua data ruangan menggunakan ajax
+     * fungsi untuk menampilkan semua data mapel menggunakan ajax
      * 
      * @return button $button mengembalikan nilai button
-     * @return view datamaster.ruangan 
+     * @return view datamaster.mataPelajaran 
      */
+
     public function index()
     {
         if (request()->ajax()) {
-            return datatables()->of(Ruangan::latest()->get())->addColumn('action', function ($data) {
+            return datatables()->of(Mapel::latest()->get())->addColumn('action', function ($data) {
                 $button = '<button type="button" name="edit" id="' . $data->id . '" class="edit btn btn-primary btn-sm">' . __('tabel.Edit') . '</button>';
                 $button .= '&nbsp;&nbsp;';
                 $button .= '<button type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm" >' . __('tabel.Delete') . '</button>';
@@ -38,13 +40,13 @@ class RuanganController extends Controller
                 ->make(true);
         }
 
-        $ruangan = Ruangan::latest();
+        $mapel = Mapel::latest();
 
-        return view('datamaster.ruangan', compact('ruangan'));
+        return view('datamaster.mataPelajaran', compact('mapel'));
     }
 
     /**
-     * fungsi untuk masukkan data ruangan menggunakan ajax
+     * fungsi untuk masukkan data mapel menggunakan ajax
      * 
      * @param Request $request valid Request objek
      * @return json menampilkan pesan success
@@ -53,8 +55,8 @@ class RuanganController extends Controller
     {
         // rule validation
         $rules = array(
-            'kode_ruangan' => 'required',
-            'nama_ruangan' => 'required'
+            'kode_mapel' => 'required',
+            'nama_mapel' => 'required'
         );
 
         // validation
@@ -66,13 +68,7 @@ class RuanganController extends Controller
             ]);
         }
 
-        // insert data ruangan
-        $form_ruangan = array(
-            'kode_ruangan' => $request->kode_ruangan,
-            'nama_ruangan' => $request->nama_ruangan
-        );
-
-        Ruangan::create($form_ruangan);
+        Mapel::create($request->all());
 
         return response()->json([
             'success' => __('tabel.msg_berhasil')
@@ -80,15 +76,15 @@ class RuanganController extends Controller
     }
 
     /**
-     * fungsi untuk lihat data ruangan dengan parameter id
+     * fungsi untuk lihat data mapel dengan parameter id
      * 
      * @param id $id 
-     * @return json menampilkan data ruangan
+     * @return json menampilkan data mapel
      */
     public function edit($id)
     {
         if (request()->ajax()) {
-            $data = Ruangan::findOrFail($id);
+            $data = Mapel::findOrFail($id);
             return response()->json([
                 'data' => $data
             ]);
@@ -96,7 +92,7 @@ class RuanganController extends Controller
     }
 
     /**
-     * fungsi untuk update data ruangan parameter id 
+     * fungsi untuk update data mapel parameter id 
      * 
      * @param Request $request valid Request objek 
      * @return json jika berhasil menampilkan pesan success kalau gagal menampilkan pesan error
@@ -105,8 +101,8 @@ class RuanganController extends Controller
     {
         // rule validation
         $rules = array(
-            'kode_ruangan' => 'required',
-            'nama_ruangan' => 'required'
+            'kode_mapel' => 'required',
+            'nama_mapel' => 'required'
         );
 
         // validation
@@ -119,26 +115,27 @@ class RuanganController extends Controller
         }
 
         // insert data ruangan
-        $form_ruangan = array(
-            'kode_ruangan' => $request->kode_ruangan,
-            'nama_ruangan' => $request->nama_ruangan
+        $form_mapel = array(
+            'kode_mapel' => $request->kode_mapel,
+            'nama_mapel' => $request->nama_mapel
         );
 
-        Ruangan::whereId($request->hidden_id)->update($form_ruangan);
+        Mapel::whereId($request->hidden_id)->update($form_mapel);
 
+        // response json
         return response()->json([
             'success' => __('tabel.msg_berhasil')
         ]);
     }
 
     /**
-     * fungsi untuk hapus data ruangan dengan parameter id
+     * fungsi untuk hapus data mapel dengan parameter id
      * 
      * @param id $id 
      */
     public function destroy($id)
     {
-        $data = Ruangan::findOrFail($id);
+        $data = Mapel::findOrFail($id);
         $data->delete();
     }
 }

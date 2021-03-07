@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\WEB\Datamaster;
 
-use App\Models\Kejuruan;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Kejuruan;
 use Illuminate\Support\Facades\Validator;
 
 /**

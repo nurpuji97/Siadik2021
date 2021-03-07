@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Datamaster;
 
 use App\Http\Controllers\Controller;
-use App\Models\Waktu;
-use Illuminate\Http\Request;
+use App\Models\Ruangan;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 /**
- * kelas API WaktuController
+ * kelas API RuanganController
  * 
- * kelas ini untuk CRUD(Cread Read Update Delete) Waktu laravel 8 Rest Api
+ * kelas ini untuk CRUD(Cread Read Update Delete) ruangan laravel 8 Rest Api
  * 
  * @package LatihanProject2021
  * @subpackage Cummon
@@ -18,38 +18,37 @@ use Illuminate\Support\Facades\Validator;
  * @author Nur Pujiyanto <Nurpujiyanto1997@gmail.com>
  * 
  */
-
-class WaktuController extends Controller
+class RuanganController extends Controller
 {
     /**
-     * fungsi untuk menampilkan semua data kejuruan
+     * fungsi untuk menampilkan semua data ruangan
      * 
-     * @return json respon message : success, waktu : semua data waktu 
+     * @return json respon message : success, ruangan : semua data ruangan 
      */
     public function index()
     {
         // tampilkan data
-        $waktu = Waktu::all();
+        $ruangan = Ruangan::all();
 
         // kembalikan nilai datasiswa
         return response()->json([
             'message' => 'Success',
-            'waktu' => $waktu
+            'siswa' => $ruangan
         ], 200);
     }
 
     /**
-     * fungsi untuk membuat data waktu
+     * fungsi untuk membuat data ruangan
      * 
      * @param Request $request valid Request objek
-     * @return json respon message : success, waktu : menampilkan hasil input data waktu 
+     * @return json respon message : success, ruangan : menampilkan hasil input data ruangan 
      */
     public function create(Request $request)
     {
         // rules 
         $rules = array(
-            'jam' => 'required',
-            'jp' => 'required'
+            'kode_ruangan' => 'required',
+            'nama_ruangan' => 'required'
         );
 
         // validation
@@ -60,49 +59,49 @@ class WaktuController extends Controller
         }
 
         // create data
-        $waktu = Waktu::create($request->all());
+        $ruangan = Ruangan::create($request->all());
 
         // response json
         return response()->json([
             'messages' => 'success',
-            'data_waktu' => $waktu
+            'data_ruangan' => $ruangan
         ], 200);
     }
 
     /**
-     * fungsi untuk lihat data waktu dengan parameter id
+     * fungsi untuk lihat data ruangan dengan parameter id
      * 
      * @param id $id
-     * @return json respon message : success, data_waktu : data waktu
+     * @return json respon message : success, data_ruangan : data ruangan
      */
     public function edit($id)
     {
         // cari data ruangan berdasarkan id
-        $waktu = Waktu::find($id);
+        $ruangan = Ruangan::find($id);
 
         // response json
         return response()->json([
             'messages' => 'success',
-            'data_waktu' => $waktu
+            'data_ruangan' => $ruangan
         ], 200);
     }
 
     /**
-     * fungsi untuk update waktu dengan parameter id
+     * fungsi untuk update user_id ruangan dengan parameter id
      * 
      * @param id $id
      * @param Request $request valid Request objek
-     * @return json respon message : success, data_waktu : menampilkan hasil update data waktu
+     * @return json respon message : success, data_ruangan : menampilkan hasil update data ruangan
      */
     public function update(Request $request, $id)
     {
-        // cari data waktu berdasarkan id
-        $waktu = Waktu::find($id);
+        // cari data ruangan berdasarkan id
+        $ruangan = Ruangan::find($id);
 
         // rules 
         $rules = array(
-            'jam' => 'required',
-            'jp' => 'required'
+            'kode_ruangan' => 'required',
+            'nama_ruangan' => 'required'
         );
 
         // validation
@@ -113,17 +112,17 @@ class WaktuController extends Controller
         }
 
         // update data
-        $waktu->update($request->all());
+        $ruangan->update($request->all());
 
         // response json
         return response()->json([
             'messages' => 'success',
-            'data_waktu' => $waktu
+            'data_ruangan' => $ruangan
         ], 200);
     }
 
     /**
-     * fungsi untuk hapus data waktu dengan parameter id
+     * fungsi untuk hapus data ruangan dengan parameter id
      * 
      * @param id $id
      * @return json respon message : success
@@ -131,7 +130,7 @@ class WaktuController extends Controller
     public function delete($id)
     {
         // hapus data ruangan berdasarkan id
-        Waktu::find($id)->delete();
+        Ruangan::find($id)->delete();
 
         // response json
         return response()->json([
