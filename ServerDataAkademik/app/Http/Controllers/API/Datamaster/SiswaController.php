@@ -58,7 +58,7 @@ class SiswaController extends Controller
 
             'agama' => 'required',
             'alamat' => 'required',
-            // 'avatar' => 'required|image|min:500',
+            'avatar' => 'required|image|min:500',
             'nohp' => 'required'
         );
 
@@ -69,11 +69,8 @@ class SiswaController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
-        // // convert menjadi gambar
-        // $image = $request->file('avatar');
-
-        // $new_name = rand() . '.' . $image->getClientOriginalExtension();
-        // $image->move(public_path('images'), $new_name);
+        // image Api upload
+        $result = $request->file('avatar')->store('Apidocs');
 
         // insert data User
         $user = new User;
@@ -91,7 +88,7 @@ class SiswaController extends Controller
             'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
-            // 'avatar' => $new_name,
+            'avatar' => $result,
             'nohp' => $request->nohp
         );
 
@@ -118,7 +115,7 @@ class SiswaController extends Controller
             'name' => 'required',
             'agama' => 'required',
             'alamat' => 'required',
-            // 'avatar' => 'required|image|min:500',
+            'avatar' => 'required|image|min:500',
             'nohp' => 'required'
         );
 
@@ -129,10 +126,8 @@ class SiswaController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
-        // $image = $request->file('avatar');
-
-        // $new_name = rand() . '.' . $image->getClientOriginalExtension();
-        // $image->move(public_path('images'), $new_name);
+        // image Api upload
+        $result = $request->file('avatar')->store('Apidocs');
 
         // insert data Siswa
         $form_siswa = array(
@@ -140,7 +135,7 @@ class SiswaController extends Controller
             'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
-            // 'avatar' => $new_name,
+            'avatar' => $result,
             'nohp' => $request->nohp
         );
 
@@ -232,7 +227,7 @@ class SiswaController extends Controller
             'name' => 'required',
             'agama' => 'required',
             'alamat' => 'required',
-            // 'avatar' => 'required|image|min:500',
+            'avatar' => 'required|image|min:500',
             'nohp' => 'required'
         );
 
@@ -243,11 +238,8 @@ class SiswaController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
-        // // convert menjadi gambar
-        // $image = $request->file('avatar');
-
-        // $new_name = rand() . '.' . $image->getClientOriginalExtension();
-        // $image->move(public_path('images'), $new_name);
+        // image Api upload
+        $result = $request->file('avatar')->store('Apidocs');
 
         // update siswa
         $siswa->update([
@@ -255,7 +247,7 @@ class SiswaController extends Controller
             'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
-            // 'avatar' => $new_name,
+            'avatar' => $result,
             'nohp' => $request->nohp
         ]);
 
